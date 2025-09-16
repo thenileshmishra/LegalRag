@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+*.ckpt
+models/
+data/
+.vscode/
