@@ -3,5 +3,6 @@ __pycache__/
 .env
 *.ckpt
 models/
-data/
+data/RawData
 .vscode/
+folder.txt
