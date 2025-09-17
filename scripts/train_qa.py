@@ -1,7 +1,8 @@
 # scripts/train_qa.py
 import json
 from pathlib import Path
-from datasets import Dataset, DatasetDict, load_metric
+from datasets import Dataset, DatasetDict
+import evaluate
 from transformers import (
     AutoTokenizer, AutoModelForQuestionAnswering,
     TrainingArguments, Trainer
@@ -113,9 +114,11 @@ tokenized_ds = ds.map(
 
 model = AutoModelForQuestionAnswering.from_pretrained(MODEL_NAME)
 
+from transformers import IntervalStrategy
+
 training_args = TrainingArguments(
     output_dir=str(OUTPUT_DIR),
-    evaluation_strategy="epoch",
+    evaluation_strategy=IntervalStrategy.EPOCH,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
     num_train_epochs=3,
@@ -126,7 +129,7 @@ training_args = TrainingArguments(
 )
 
 # simple F1+EM compute (approx)
-metric = load_metric("squad")
+metric = evaluate.load("squad")
 
 def compute_metrics(p):
     return metric.compute(predictions=p.predictions, references=p.label_ids)

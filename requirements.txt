@@ -1,0 +1,27 @@
+# Core data processing
+pandas>=2.3.2
+numpy>=2.3.3
+pytz>=2025.2
+tzdata>=2025.2
+
+# Machine Learning & NLP
+transformers
+datasets
+evaluate
+torch
+accelerate
+
+# Data loading and processing
+kagglehub>=0.3.13
+json5
+
+# Jupyter and development
+ipykernel>=6.30.1
+ipython>=9.5.0
+jupyter_client>=8.6.3
+jupyter_core>=5.8.1
+
+# Utilities
+tqdm>=4.67.1
+requests>=2.32.5
+PyYAML>=6.0.2
