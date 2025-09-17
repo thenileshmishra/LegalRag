@@ -4,5 +4,6 @@ __pycache__/
 *.ckpt
 models/
 data/RawData
+data/processesData
 .vscode/
 folder.txt

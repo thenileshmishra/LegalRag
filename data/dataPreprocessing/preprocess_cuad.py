@@ -4,12 +4,12 @@ import csv
 import os
 from pathlib import Path
 
-DATA_DIR = Path("data")  # adjust
+DATA_DIR = Path("data/RawData")  # adjust
 CUAD_JSON = DATA_DIR / "CUAD_v1.json"
 MASTER = DATA_DIR / "master_clauses.csv"
 LABEL_GROUP = DATA_DIR / "label_group_xlsx"  # you can load mapping manually
 
-OUT_DIR = Path("processed")
+OUT_DIR = Path("data/processesData")
 OUT_DIR.mkdir(exist_ok=True)
 
 # Load cuad json (SQuAD-like) 
@@ -20,9 +20,9 @@ squad = {"version": "v1", "data": []}
 csv_rows = []
 simplify_pairs = []
 
-for doc in cuad:
+for doc in cuad["data"]:
     title = doc.get("title", "")
-    paragraphs = doc["paragraphs"]  # depends on exactly how CUAD formatted; adapt keys
+    paragraphs = doc["paragraphs"]  
     for pid, p in enumerate(paragraphs):
         context = p["context"]
         qa_list = p.get("qas", [])
